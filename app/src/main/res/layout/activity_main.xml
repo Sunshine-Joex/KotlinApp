@@ -5,18 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context="com.example.administrator.kotlinapp.MainActivity">
 
- <!--  <com.example.administrator.kotlinapp.CircleView
+   <com.example.administrator.kotlinapp.CircleView
        android:id="@+id/circleview"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-      />-->
+      />
 
    <com.example.administrator.kotlinapp.CircleView
        android:id="@+id/circleview_100"
        android:layout_marginTop="50dp"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
+       android:layout_width="100dp"
+       android:layout_height="100dp"
        />
 </LinearLayout>
