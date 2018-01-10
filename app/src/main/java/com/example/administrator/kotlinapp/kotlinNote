@@ -1,0 +1,146 @@
+TODO Kotlin笔记
+1、
+    val a:Int 不可变相当于java中 final 修饰符
+    var b:Int 可以修改
+    var c:String? =null 空安全，如果需要变量为空则需要加?
+
+常见的方法格式：
+     有返回值函数
+     fun sum(a :Int,b:Int):Int{
+             if(a>b){
+                  return a
+             }else{
+                 return b
+             }
+        }
+
+     或
+      fun sum(a:Int ,b:Int)=if(a>b)  a else b
+      返回类型、return省略，=代替{}
+
+    无返回值函数(Unit可以省略)
+        fun sum(a :Int,b:Int):Unit{
+                if(a>b){
+                     print(a)
+                }else{
+                     print(b)
+                }
+               }
+
+
+    类型判断：is 类似java中 instanceof
+     fun desc(any: Any) {
+                 if (any is String) {
+                     Log.i("desc", any.length.toString())
+                 } else {
+                     Log.i("desc", "not String")
+                 }
+             }
+
+    for循环：
+     val list= listOf("a",1,2.9)
+             for (item in list){
+                  print(item)
+             }
+
+     when 表达式
+    fun descwhen(any: Any) {
+            when (any) {
+                is Int -> "any is int"
+                is Log -> "any is Long"
+                is String -> "any is String"
+                is Unit->"any is Unit"
+                else -> ""
+            }
+        }
+    map 用法
+    val map = mapOf("a" to 1, "b" to 2, "c" to 3)
+                   for ((k, v) in map) {
+                    print("$k--$v")
+                   }
+
+    创建单例
+
+    object Resourse {
+         var  name=""
+    }
+
+    -----------------------------------------类与对象---------------------------------------------------
+
+    class Student constructor(var name:String) {//主构造函数，如果没有注解或则可见性修饰符constructor 可以省略
+
+        //初始化块
+         init {
+             name="Tom"
+         }
+
+        //次构造函数 可以有多个，但次构造函数必须委托给主构造函数，通过this关键字
+        constructor(name: String,student: Student) : this(name) {
+
+        }
+
+
+    }
+
+    //创建对象不需要new
+     val stu=Student("");
+
+    在kotlin中Any是顶层基类，相等于Java的Object
+
+    //默认情况下kotlin的类是final,因此如果需要继承就要开头由open修饰
+    open calss Base(p:Int)
+
+    class Derived(p:Int):Base(p)   如果有主构造函数，子类可以用主构造函数初始化
+
+    //如果没有主构造函数：每个次构造函数必须使⽤ super 关键字初始化其基类型
+
+    class MyView : View {
+
+    constructor(ctx: Context) : super(ctx)
+
+    constructor(ctx: Context, attrs: AttributeSet) : super(ctx, attrs)
+
+    }
+
+    方法覆盖：需要显示open修饰符修饰 类、函数、变量
+     open class Base() {
+         open fun v() {}
+
+     }
+
+     class Derived() : Base() {
+         override fun v() {
+
+         }
+     }
+
+      //伴生对象，由于kotlin没有静态方法，就出现了伴生对象。这样我们就可以在其他地方调用了（ps:StringUtils.isEmpty("qly")）
+    class StringUtils {
+        companion object {
+            fun isEmpty(str: String): Boolean {
+                return "" == str
+            }
+        }
+    }
+
+    //扩展函数 和  扩展属性 不会去改变该类，
+
+     fun <T> MutableList<T>.swap(index1: Int, index2: Int) {
+         val tmp = this[index1] // “this”对应该列表
+         this[index1] = this[index2]
+         this[index2] = tmp
+     }
+
+     val <T> List<T>.lastIndex: Int
+         get() = size - 1
+
+     //数据类 只保存数据的类，譬如我们每次解析json是不是都要创建bean类，那我们现在可以用kotlin的数据类了
+     数据类必须满⾜以下要求：
+         主构造函数需要至少有一个参数；
+         主构造函数的所有参数需要标记为 val 或 var ；
+         数据类不能是抽象、开放、密封或者内部的；
+         开头必须是data标记
+
+     data class User(val name: String, val age: Int)
+
+

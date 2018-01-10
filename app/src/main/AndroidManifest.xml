@@ -16,6 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.CircleViewActivity" />
+        <activity android:name=".ui.PieChartActivity"></activity>
+        <activity android:name=".ui.RadarChartActivity"></activity>
     </application>
 
 </manifest>
