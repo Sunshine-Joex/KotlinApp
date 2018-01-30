@@ -29,7 +29,33 @@
         android:id="@+id/path"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PATH"
+        android:text="雷达图"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        />
+
+    <Button
+        android:id="@+id/bezier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="贝塞尔曲线"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        />
+
+    <Button
+        android:id="@+id/shader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="着色器"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        />
+    <Button
+        android:id="@+id/watch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="表"
         android:textAllCaps="false"
         android:layout_gravity="center"
         />

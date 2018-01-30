@@ -4,9 +4,7 @@ import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.example.administrator.kotlinapp.ui.CircleViewActivity
-import com.example.administrator.kotlinapp.ui.PieChartActivity
-import com.example.administrator.kotlinapp.ui.RadarChartActivity
+import com.example.administrator.kotlinapp.ui.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() ,View.OnClickListener{
@@ -18,6 +16,9 @@ class MainActivity : AppCompatActivity() ,View.OnClickListener{
         circleView.setOnClickListener(this)
         test.setOnClickListener(this)
         path.setOnClickListener(this)
+        bezier.setOnClickListener(this)
+        shader.setOnClickListener(this)
+        watch.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -25,7 +26,14 @@ class MainActivity : AppCompatActivity() ,View.OnClickListener{
            R.id.circleView ->   startActivity(Intent(this, CircleViewActivity::class.java))
            R.id.test ->startActivity(Intent(this, PieChartActivity::class.java))
             R.id.path->startActivity(Intent(this,RadarChartActivity::class.java))
+            R.id.bezier ->startActivity(Intent(this,BezierActivity::class.java))
+            R.id.shader ->startActivity(Intent(this,ShaderActivity::class.java))
+            R.id.watch ->startActivity(Intent(this,WatchActivity::class.java))
+
+
         }
     }
+
+
 
 }
