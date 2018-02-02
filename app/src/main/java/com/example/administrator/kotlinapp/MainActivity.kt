@@ -19,6 +19,8 @@ class MainActivity : AppCompatActivity() ,View.OnClickListener{
         bezier.setOnClickListener(this)
         shader.setOnClickListener(this)
         watch.setOnClickListener(this)
+        porterDuffMode.setOnClickListener(this)
+        porterDuffXfermode.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -29,6 +31,8 @@ class MainActivity : AppCompatActivity() ,View.OnClickListener{
             R.id.bezier ->startActivity(Intent(this,BezierActivity::class.java))
             R.id.shader ->startActivity(Intent(this,ShaderActivity::class.java))
             R.id.watch ->startActivity(Intent(this,WatchActivity::class.java))
+            R.id.porterDuffMode ->startActivity(Intent(this,PorterDuffModeActivity::class.java))
+            R.id.porterDuffXfermode ->startActivity(Intent(this,PorterDuffXfermodeActivity::class.java))
 
 
         }

@@ -8,7 +8,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.example.administrator.kotlinapp"
-        minSdkVersion 15
+        minSdkVersion 21
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -19,7 +19,7 @@ android {
             }
         }*/
 
-       /* ndk {
+        /* ndk {
             // Specifies the ABI configurations of your native
             // libraries Gradle should build and package with your APK.
             abiFilters 'armeabi', 'x86'

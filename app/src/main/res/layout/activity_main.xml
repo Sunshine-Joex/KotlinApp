@@ -59,5 +59,20 @@
         android:textAllCaps="false"
         android:layout_gravity="center"
         />
-
+    <Button
+        android:id="@+id/porterDuffMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PorterDuffMode"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        />
+    <Button
+        android:id="@+id/porterDuffXfermode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PorterDuffXfermode圆角图"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        />
 </LinearLayout>
