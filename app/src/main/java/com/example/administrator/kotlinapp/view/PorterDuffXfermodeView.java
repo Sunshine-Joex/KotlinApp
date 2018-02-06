@@ -29,13 +29,10 @@ import java.lang.ref.WeakReference;
 @SuppressLint("AppCompatCustomView")
 public class PorterDuffXfermodeView extends ImageView {
 
-    protected Context mContext;
 
     private static final Xfermode sXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
-    //    private BitmapShader mBitmapShader;
     private Bitmap mMaskBitmap;
     private Paint mPaint;
-    private WeakReference<Bitmap> mWeakBitmap;
     int type;//绘制形状
     public static final int CIRCLE = 0;//原型
     public static final int ROUNDRECT = 1;//圆角
@@ -44,88 +41,63 @@ public class PorterDuffXfermodeView extends ImageView {
 
     public PorterDuffXfermodeView(Context context) {
         super(context);
-        init(context);
+        init();
     }
 
     public PorterDuffXfermodeView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context);
-
-
+        init();
         TypedArray array = context.obtainStyledAttributes(attrs,
                 R.styleable.pdxView);
         type = array.getInt(R.styleable.pdxView_type, 0);// 默认为Circle
+        array.recycle();
     }
 
     public PorterDuffXfermodeView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        init(context);
+        init();
     }
 
-    private void init(Context context) {
-        mContext = context;
+    private void init() {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     }
 
-    public void invalidate() {
-        mWeakBitmap = null;
-        if (mMaskBitmap != null) {
-            mMaskBitmap.recycle();
-        }
-        super.invalidate();
-    }
 
-    @SuppressLint("DrawAllocation")
     @Override
     protected void onDraw(Canvas canvas) {
-        Bitmap bitmap = mWeakBitmap != null ? mWeakBitmap.get() : null;
-        // Bitmap not loaded.
-        if (bitmap == null || bitmap.isRecycled()) {
-            Drawable drawable = getDrawable();
-            if (drawable != null) {
-                // Allocation onDraw but it's ok because it will not always be called.
-                bitmap = Bitmap.createBitmap(getWidth(),
-                        getHeight(), Bitmap.Config.ARGB_8888);
-                Canvas bitmapCanvas = new Canvas(bitmap);
-                drawable.setBounds(0, 0, getWidth(), getHeight());
-                drawable.draw(bitmapCanvas);
+        Bitmap bitmap = null;
+        Drawable drawable = getDrawable();
+        if (drawable != null) {
+            bitmap = Bitmap.createBitmap(getWidth(),
+                    getHeight(), Bitmap.Config.ARGB_8888);
+            Canvas bitmapCanvas = new Canvas(bitmap);
+            drawable.setBounds(0, 0, getWidth(), getHeight());
+            drawable.draw(bitmapCanvas);
 
-                // If mask is already set, skip and use cached mask.
-                if (mMaskBitmap == null || mMaskBitmap.isRecycled()) {
-                    switch (type) {
-                        case CIRCLE:
-                            mMaskBitmap = getBitmapCircle(getWidth(), getHeight());
-                            break;
-                        case ROUNDRECT:
-                            mMaskBitmap = getBitmapRoundRect(getWidth(), getHeight());
-                            break;
-                        case HEART:
-                            mMaskBitmap = getBitmapHeart(getWidth(), getHeight());
-                            break;
-                        case OVAL:
-                            mMaskBitmap = getBitmapOval(getWidth(), getHeight());
-                            break;
-
-                    }
+            if (mMaskBitmap == null || mMaskBitmap.isRecycled()) {
+                switch (type) {
+                    case CIRCLE:
+                        mMaskBitmap = getBitmapCircle(getWidth(), getHeight());
+                        break;
+                    case ROUNDRECT:
+                        mMaskBitmap = getBitmapRoundRect(getWidth(), getHeight());
+                        break;
+                    case HEART:
+                        mMaskBitmap = getBitmapHeart(getWidth(), getHeight());
+                        break;
+                    case OVAL:
+                        mMaskBitmap = getBitmapOval(getWidth(), getHeight());
+                        break;
 
                 }
 
-                // Draw Bitmap.
-                mPaint.reset();
-                mPaint.setFilterBitmap(false);
-                mPaint.setXfermode(sXfermode);
-                bitmapCanvas.drawBitmap(mMaskBitmap, 0.0f, 0.0f, mPaint);
-
-                mWeakBitmap = new WeakReference<>(bitmap);
             }
-        }
 
-        // Bitmap already loaded.
-        if (bitmap != null) {
+            mPaint.setXfermode(sXfermode);
+            bitmapCanvas.drawBitmap(mMaskBitmap, 0.0f, 0.0f, mPaint);
+
             mPaint.setXfermode(null);
-//                    mPaint.setShader(null);
             canvas.drawBitmap(bitmap, 0.0f, 0.0f, mPaint);
-            return;
         }
     }
 

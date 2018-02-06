@@ -7,6 +7,7 @@
         android:layout_height="match_parent"
         tools:context="com.example.administrator.kotlinapp.ui.PorterDuffXfermodeActivity"
        >
+   
 
     <com.example.administrator.kotlinapp.view.PorterDuffXfermodeView
         android:id="@+id/circle"

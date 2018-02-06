@@ -4,18 +4,19 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:hardwareAccelerated="false"
-        >
-        <activity android:name=".MainActivity"> <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ui.CircleViewActivity" />
         <activity android:name=".ui.PieChartActivity" />
         <activity android:name=".ui.RadarChartActivity" />
@@ -23,12 +24,9 @@
         <activity android:name=".ui.ShaderActivity" />
         <activity android:name=".ui.JniActivity" />
         <activity android:name=".ui.WatchActivity" />
-        <activity android:name=".ui.PorterDuffXfermodeActivity">
-
-        </activity>
-        <activity android:name=".ui.PorterDuffModeActivity">
-
-        </activity>
+        <activity android:name=".ui.PorterDuffXfermodeActivity"></activity>
+        <activity android:name=".ui.PorterDuffModeActivity"></activity>
+        <activity android:name=".ui.ScratchCarActivity"></activity>
     </application>
 
 </manifest>

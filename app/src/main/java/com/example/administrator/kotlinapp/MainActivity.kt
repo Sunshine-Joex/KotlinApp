@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() ,View.OnClickListener{
         watch.setOnClickListener(this)
         porterDuffMode.setOnClickListener(this)
         porterDuffXfermode.setOnClickListener(this)
+        scratchCard.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() ,View.OnClickListener{
             R.id.watch ->startActivity(Intent(this,WatchActivity::class.java))
             R.id.porterDuffMode ->startActivity(Intent(this,PorterDuffModeActivity::class.java))
             R.id.porterDuffXfermode ->startActivity(Intent(this,PorterDuffXfermodeActivity::class.java))
+            R.id.scratchCard ->startActivity(Intent(this,ScratchCarActivity::class.java))
 
 
         }
