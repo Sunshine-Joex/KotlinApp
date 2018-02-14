@@ -11,11 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ui.CircleViewActivity" />
         <activity android:name=".ui.PieChartActivity" />
@@ -24,9 +20,18 @@
         <activity android:name=".ui.ShaderActivity" />
         <activity android:name=".ui.JniActivity" />
         <activity android:name=".ui.WatchActivity" />
-        <activity android:name=".ui.PorterDuffXfermodeActivity"></activity>
-        <activity android:name=".ui.PorterDuffModeActivity"></activity>
-        <activity android:name=".ui.ScratchCarActivity"></activity>
+        <activity android:name=".ui.PorterDuffXfermodeActivity" />
+        <activity android:name=".ui.PorterDuffModeActivity" />
+        <activity android:name=".ui.ScratchCarActivity" />
+        <activity android:name=".touchevent.TouchEventActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>
